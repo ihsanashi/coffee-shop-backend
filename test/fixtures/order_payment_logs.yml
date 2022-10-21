@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order: one
+  order_payment: one
+  response_code: MyString
+  response_message: MyString
+
+two:
+  order: two
+  order_payment: two
+  response_code: MyString
+  response_message: MyString
