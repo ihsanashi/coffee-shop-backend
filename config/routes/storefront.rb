@@ -1,5 +1,10 @@
 namespace :storefront do
-  resources :users
+  resources :users do
+    resources :profiles
+  end
+
   resources :products
-  resources :orders
+  resources :orders do
+    resources :order_payments
+  end
 end
