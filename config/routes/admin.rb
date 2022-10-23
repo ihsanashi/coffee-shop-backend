@@ -1,7 +1,10 @@
 namespace :admin do
+  post 'users/register' => 'users#register'
+  post 'users/login' => 'users#login'
+
   resources :roles do
-    resources :users do
-      resources :profiles
+    resources :users, shallow: true do
+      resources :profiles, shallow: true
     end
   end
 
@@ -11,10 +14,10 @@ namespace :admin do
     resources :product_notes
     resources :product_tags
     resources :product_taxes
-    resources :product_variants do
-      resources :variant_options do
-        resources :variant_images
-        resources :variant_inventories
+    resources :product_variants, shallow: true do
+      resources :variant_options, shallow: true do
+        resources :variant_images, shallow: true
+        resources :variant_inventories, shallow: true
       end
     end
   end
@@ -22,11 +25,11 @@ namespace :admin do
   resources :orders do
     resources :order_sessions
     resources :order_discounts
-    resources :order_items do
-      resources :order_item_fulfillments
+    resources :order_items, shallow: true do
+      resources :order_item_fulfillments, shallow: true
     end
-    resources :order_payments do
-      resources :order_payment_logs
+    resources :order_payments, shallow: true do
+      resources :order_payment_logs, shallow: true
     end
   end
 end

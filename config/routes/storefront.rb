@@ -1,10 +1,11 @@
 namespace :storefront do
-  resources :users do
-    resources :profiles
+  resources :users, shallow: true do
+    resources :profiles, shallow: true
   end
 
   resources :products
-  resources :orders do
-    resources :order_payments
+
+  resources :orders, shallow: true do
+    resources :order_payments, shallow: true
   end
 end
