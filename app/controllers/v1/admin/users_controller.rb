@@ -4,7 +4,10 @@ class V1::Admin::UsersController < ApplicationController
 
     if @user.valid?
       token = encode_token({ user_id: @user.id })
-      render json: { user: @user, token: token }, status: :ok
+      render json: {
+        user: @user.as_json(except: :password_digest),
+        token: token
+      }, status: :ok
     else
       render json: { error: 'Invalid credentials' }, status: :unprocessable_entity
     end
@@ -15,7 +18,10 @@ class V1::Admin::UsersController < ApplicationController
 
     if @user && @user.authenticate(user_params[:password])
       token = encode_token({ user_id: @user.id })
-      render json: { user: @user, token: token }, status: :ok
+      render json: {
+        user: @user.as_json(except: :password_digest),
+        token: token
+      }, status: :ok
     else
       render json: { error: 'Invalid credentials '}, status: :unprocessable_entity
     end
