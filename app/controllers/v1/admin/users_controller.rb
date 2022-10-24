@@ -27,6 +27,28 @@ class V1::Admin::UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.where(role_id: params[:role_id])
+
+    render json: { users: @users }, status: :ok
+  end
+
+  def show
+    @user = User.where(id: params[:id])
+
+    render json: { user: @user }, status: :ok
+  end
+
+  def destroy
+    @user = User.destroy(params[:id])
+
+    if @user.destroyed?
+      render body: nil, status: :no_content
+    else
+      render json: { error: 'Error deleting user' }, status: :not_found
+    end
+  end
+
   private
 
   def user_params
