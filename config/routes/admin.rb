@@ -9,9 +9,7 @@ namespace :admin do
   end
 
   resources :products, param: :slug do
-    resources :product_categories
     resources :product_images
-    resources :product_notes
     resources :product_tags
     resources :product_taxes
     resources :product_variants, shallow: true do

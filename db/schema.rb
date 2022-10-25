@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_053455) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_053734) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,14 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_053455) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "product_categories", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_categories_on_product_id"
-  end
-
   create_table "product_images", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.text "url"
@@ -95,14 +87,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_053455) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_images_on_product_id"
-  end
-
-  create_table "product_notes", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_notes_on_product_id"
   end
 
   create_table "product_tags", force: :cascade do |t|
@@ -208,9 +192,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_053455) do
   add_foreign_key "order_payments", "orders"
   add_foreign_key "order_sessions", "orders"
   add_foreign_key "orders", "users"
-  add_foreign_key "product_categories", "products"
   add_foreign_key "product_images", "products"
-  add_foreign_key "product_notes", "products"
   add_foreign_key "product_tags", "products"
   add_foreign_key "product_taxes", "products"
   add_foreign_key "product_variants", "products"
