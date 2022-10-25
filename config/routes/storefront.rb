@@ -3,7 +3,7 @@ namespace :storefront do
     resources :profiles, shallow: true
   end
 
-  resources :products
+  resources :products, param: :slug
 
   resources :orders, shallow: true do
     resources :order_payments, shallow: true

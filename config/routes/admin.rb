@@ -8,7 +8,7 @@ namespace :admin do
     end
   end
 
-  resources :products do
+  resources :products, param: :slug do
     resources :product_categories
     resources :product_images
     resources :product_notes

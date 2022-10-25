@@ -5,4 +5,12 @@ class Product < ApplicationRecord
   has_one :product_category
   has_one :product_note
   has_one :product_tax
+
+  validates :slug, uniqueness: true
+
+  before_create :slugify
+
+  def slugify
+    self.slug = title.parameterize
+  end
 end
