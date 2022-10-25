@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_053734) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_062105) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,14 +95,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_053734) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_tags_on_product_id"
-  end
-
-  create_table "product_taxes", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.decimal "rate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_taxes_on_product_id"
   end
 
   create_table "product_variants", force: :cascade do |t|
@@ -194,7 +186,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_053734) do
   add_foreign_key "orders", "users"
   add_foreign_key "product_images", "products"
   add_foreign_key "product_tags", "products"
-  add_foreign_key "product_taxes", "products"
   add_foreign_key "product_variants", "products"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "roles"

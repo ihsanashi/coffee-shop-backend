@@ -11,7 +11,6 @@ namespace :admin do
   resources :products, param: :slug do
     resources :product_images
     resources :product_tags
-    resources :product_taxes
     resources :product_variants, shallow: true do
       resources :variant_options, shallow: true do
         resources :variant_images, shallow: true

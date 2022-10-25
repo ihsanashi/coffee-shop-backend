@@ -1,0 +1,5 @@
+class DropProductTaxModel < ActiveRecord::Migration[7.0]
+  def change
+    drop_table :product_taxes
+  end
+end
