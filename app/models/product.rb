@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   validates :slug, uniqueness: true
 
   before_create :slugify
+  before_update :slugify, if: :will_save_change_to_title
 
   def slugify
     self.slug = title.parameterize
