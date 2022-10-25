@@ -34,7 +34,7 @@ class V1::Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = User.where(id: params[:id])
+    @user = User.where(id: params[:id]).first
 
     render json: { user: @user }, status: :ok
   end
