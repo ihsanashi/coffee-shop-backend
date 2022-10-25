@@ -4,7 +4,7 @@ namespace :admin do
 
   resources :roles do
     resources :users, shallow: true do
-      resources :profiles, shallow: true
+      resource :profile, shallow: true
     end
   end
 
